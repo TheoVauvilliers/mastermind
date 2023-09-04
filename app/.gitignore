@@ -1,0 +1,7 @@
+# Directories
+vendor/*
+!vendor/autoload.php
+
+# Private files
+.env
+.env.local
