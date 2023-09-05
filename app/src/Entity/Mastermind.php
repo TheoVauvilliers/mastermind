@@ -23,6 +23,7 @@ class Mastermind implements InitializableInterface
     public function run(): void
     {
         $codePegs = $this->codeMaker->getCodePegs();
+        // TODO: Remove this next line
         echo 'Code Maker choose : ' . implode(', ', $codePegs) . PHP_EOL;
 
         while (!$this->isWin && $this->currentRound <= MastermindConstant::ROUNDS) {

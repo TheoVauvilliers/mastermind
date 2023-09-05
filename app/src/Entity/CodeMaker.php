@@ -17,7 +17,7 @@ final class CodeMaker extends AbstractCodeEntity
     }
 
     /**
-     * TODO: Fix a bug that does not handle pegs well due to a uniqueness problem on the check
+     * FIXME: Fix a bug that does not handle pegs well due to a uniqueness problem on the check
      * @return string[]
      */
     public function getKeyPegs(array $selectedCodePegs): array
