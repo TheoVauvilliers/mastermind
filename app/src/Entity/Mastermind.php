@@ -2,18 +2,12 @@
 
 namespace App\Entity;
 
+use App\Constant\MastermindConstant;
 use App\Interface\InitializableInterface;
 use App\Service\Speaker;
 
 class Mastermind implements InitializableInterface
 {
-    public const MAX_ROUND = 12;
-    public const PEGS = 4;
-    public const COLORS = [
-        'red', 'green', 'blue', 'yellow',
-        'black', 'white',
-    ];
-
     private bool $isWin = false;
     private int $currentRound = 0;
 
@@ -31,7 +25,7 @@ class Mastermind implements InitializableInterface
         $codePegs = $this->codeMaker->getCodePegs();
         echo 'Code Maker choose : ' . implode(', ', $codePegs) . PHP_EOL;
 
-        while (!$this->isWin && $this->currentRound <= self::MAX_ROUND) {
+        while (!$this->isWin && $this->currentRound <= MastermindConstant::ROUNDS) {
             Speaker::round($this->currentRound + 1);
 
             $selectedPegs = $this->codeBreaker->getCodePegs();
@@ -50,7 +44,7 @@ class Mastermind implements InitializableInterface
 
     private function codeIsIdentical(array $codePegs, array $selectedPegs): bool
     {
-        for ($i = 0; $i < self::PEGS; $i++) {
+        for ($i = 0; $i < MastermindConstant::PEGS; $i++) {
             if ($codePegs[$i] !== $selectedPegs[$i]) {
                 return false;
             }
